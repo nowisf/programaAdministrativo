@@ -15,19 +15,23 @@ public class Querificatron{
 			Connection coneccion = ConexionSingleton.getConnection();
 			Statement declaracion = coneccion.createStatement();
 			ResultSet rs=declaracion.executeQuery("select * from "+tabla);
-			
-
-			//System.out.println(rs.findColumn("nombre"));
-			
-
-			
+				
 			
 			while(rs.next()) {
+
 				System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3)); 
 			}
+
+			declaracion.close();
+
+			System.out.println("cierre nuevo");
+			ConexionSingleton.closeConnection();
+
+			System.out.println("cierre viejo");
 			coneccion.close();
-			
+
 		}catch(Exception e){
+
 			System.out.println(e);
 		}
 		
@@ -55,10 +59,17 @@ public class Querificatron{
 			
 			System.out.println(queryInsert);
 
-			declaracion.execute(queryInsert);
+			int filas = declaracion.executeUpdate(queryInsert);
 			
+			declaracion.close();
+			
+			System.out.println("cierre nuevo");
+			ConexionSingleton.closeConnection();
+
+			System.out.println("cierre viejo");
 			coneccion.close();
 			
+			System.out.println("insert fn finalizada");
 		}catch(Exception e){
 			System.out.println(e);
 		}

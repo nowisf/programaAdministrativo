@@ -31,11 +31,24 @@ public class ConexionSingleton {
 	public static Connection getConnection() {
 		if (conn == null) {
 			new ConexionSingleton();
-			System.out.println("creacion de la conexion singleton");
+			System.out.println("Conexion Singleton Establecida y abierta ::)");
 		}else {
-			System.out.println("la conexion singleton ya existe");
+			System.out.println("La conexion singleton ya existe(Esto es un error, notificar a su simon mas cercano)");
 		}
 		//Statement statement =conn.createStatement();
 		return conn;
+	}
+	
+	public static void closeConnection() {
+		try {
+			conn.close();
+			System.out.println("Conexion Singleton Cerrada");
+			conn=null;
+
+		}catch(SQLException e) {
+			e.printStackTrace();
+
+		}
+		
 	}
 }
