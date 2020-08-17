@@ -1,6 +1,8 @@
 package controlador;
 
 import java.io.IOException;
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DTO.BO.UsuarioBO;
+import advancesIqtools.Datetron;
+import classes.modelo.dao.UsuarioDaoImp;
 import controlador.TesterinoBOs;
 
 @WebServlet("/servlet")
@@ -16,6 +20,7 @@ public class ServleteMain extends HttpServlet {
 	
 	UsuarioBO usuarioBO= new UsuarioBO();
 	
+	UsuarioDaoImp usuarioDao = new UsuarioDaoImp();
       
     public ServleteMain() {
         super();
@@ -55,6 +60,26 @@ public class ServleteMain extends HttpServlet {
 			  break;
 		  case "solicitarCreacionDeCuenta":
 			  System.out.println("Switch solicitarCreacionDeCuenta");
+			  
+			  
+			  System.out.println();
+			  System.out.println();
+			  System.out.println();
+			  
+			  System.out.println("COMPROBAR INEXISTENCIA DEL NOMBRE DE USUARIO");
+
+			  System.out.println("COMPROBAR INEXISTENCIA DEL NOMBRE DE USUARIO");
+
+			  
+			  usuarioDao.agregarUsuario(
+					  usuarioBO.getFilasLenght(),
+					  "cliente",
+					  request.getParameter("usuario"),
+					  request.getParameter("contraseña"),
+					  usuarioBO);
+			  
+			  getServletContext().getRequestDispatcher("/JSP/index.jsp").forward(request, response);
+
 			  
 			  break;
 		  default:

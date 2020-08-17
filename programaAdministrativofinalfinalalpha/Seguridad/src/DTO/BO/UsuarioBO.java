@@ -6,6 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 
+import advancesIqtools.Datetron;
 import classes.conexionSingleton.ConexionSingleton;
 
 import classes.modelo.objetos.Usuario;
@@ -28,9 +29,7 @@ public class UsuarioBO {
 						rs.getInt("ID_USUARIO"), 
 						rs.getString("TIPO"), 
 						rs.getString("USUARIO"), 
-						rs.getString("PASSWORD"), 
-						rs.getDate("FECHA")
-						
+						rs.getString("PASSWORD")
 						)
 						);
 			}
@@ -47,6 +46,14 @@ public class UsuarioBO {
 	
 	public void filasToString() {
 		System.out.println(filas);
+	}
+	public void agregarFila(Usuario usuario) {
+		filas.add(usuario);
+	}
+	
+	public int getFilasLenght() {
+		return filas.size();
+		
 	}
 
 }
