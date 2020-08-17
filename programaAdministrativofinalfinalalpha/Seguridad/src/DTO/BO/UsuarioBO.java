@@ -55,5 +55,24 @@ public class UsuarioBO {
 		return filas.size();
 		
 	}
+	
+	public Usuario encontrarUsuarioPorNombre(String nombre) {
+		int contador=0;
+		boolean buscando = true;
+		Usuario usuarioBuscado = null;
+		while(contador<filas.size() && buscando ) {
+
+			if(filas.get(contador).getUsuario().equals(nombre)) {
+				
+				usuarioBuscado = filas.get(contador);
+				buscando = false;
+				
+			}
+			
+		contador++;
+			
+		}
+		return usuarioBuscado;
+	}
 
 }
